@@ -59,9 +59,7 @@ const VidViewer = ({ videoSrc }) => {
           Play Video
         </button>
       )}
-      <Canvas
-        style={{ border: "1px solid black", width: "100%", height: "80%" }}
-      >
+      <Canvas style={{ width: "100%", height: "100%" }}>
         <ambientLight intensity={0.5} />
         {isPlaying && <VideoSphere videoSrc={videoSrc} />}
         <OrbitControls enableZoom={false} />
