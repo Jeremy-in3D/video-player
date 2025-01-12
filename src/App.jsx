@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useVideoTexture } from "@react-three/drei";
+import { OrbitControls, Preload, useVideoTexture } from "@react-three/drei";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -45,6 +45,7 @@ const VideoSphere = ({ videoSrc }) => {
 const VidViewer = ({ videoSrc }) => {
   return (
     <Canvas style={{ border: "1px solid black", width: "100%", height: "80%" }}>
+      <Preload />
       <ambientLight intensity={0.5} />
       <VideoSphere videoSrc={videoSrc} />
       <OrbitControls enableZoom={false} />
