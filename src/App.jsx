@@ -43,13 +43,30 @@ const VideoSphere = ({ videoSrc }) => {
 };
 
 const VidViewer = ({ videoSrc }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayVideo = () => {
+    setIsPlaying(true);
+  };
+
   return (
-    <Canvas style={{ border: "1px solid black", width: "100%", height: "80%" }}>
-      <Preload />
-      <ambientLight intensity={0.5} />
-      <VideoSphere videoSrc={videoSrc} />
-      <OrbitControls enableZoom={false} />
-    </Canvas>
+    <>
+      {!isPlaying && (
+        <button
+          onClick={handlePlayVideo}
+          style={{ position: "absolute", zIndex: 1 }}
+        >
+          Play Video
+        </button>
+      )}
+      <Canvas
+        style={{ border: "1px solid black", width: "100%", height: "80%" }}
+      >
+        <ambientLight intensity={0.5} />
+        {isPlaying && <VideoSphere videoSrc={videoSrc} />}
+        <OrbitControls enableZoom={false} />
+      </Canvas>
+    </>
   );
 };
 
